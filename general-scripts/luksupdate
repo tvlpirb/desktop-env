@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+doas clevis luks regen -d /dev/nvme0n1p3 -s 0

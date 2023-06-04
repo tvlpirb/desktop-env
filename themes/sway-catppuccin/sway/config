@@ -1,0 +1,252 @@
+### Variables ###
+# Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+font pango:JetBrainsMono Nerd Font Bold 10
+set $left h
+set $down j
+set $up k
+set $right l
+# Browsers
+set $browser firefox
+set $browser-p firefox -p
+set $altbrowser chromium
+# Terminal
+set $term kitty
+# Filemanager
+set $file thunar
+# Wallpaper
+set $wallpaper_path $HOME/Pictures/wallpapers/wallpapers/landscapes/evening-sky.png
+#set $wallpaper_path $HOME/Pictures/wallpapers/wallpapers/misc/feet-on-the-dashboard.png
+#set $wallpaper_path $HOME/Pictures/wallpapers/wallpapers/os/arch-magenta-blue-1920x1080.png
+#set $wallpaper_path $HOME/Pictures/wallpapers/wallpapers/gradients/magenta_blue.png
+# Problem? Figure out what I did :P  
+#set $wallpaper_path $HOME/Pictures/wallpapers/wallpapers/os/mateo.png
+#set $wallpaper_path $HOME/Pictures/2f0.png
+
+# Editor
+set $editor emacs
+# Chat
+set $xmpp dino
+# Menu
+set $menu  wofi --show=drun --lines=10 --prompt="Search" --allow-images --allow-markup -i
+set $dmenu ~/.config/sway/scripts/bemenu.sh | xargs swaymsg exec --
+# Set lock
+set $lock sway_lock.sh
+# Set screenrecorder
+set $screenrecorder toggle-screen-recorder.sh
+set $ocrscreenshot `grim -g "$(slurp)" - | tesseract stdin stdout -l eng | wl-copy`
+# Theme: Catppuccin
+set $green #ABE9B3
+set $black #1E1E2E
+set $red #F28FAD
+set $peach #F8BD96
+set $transparent #00000000
+# Colors
+client.focused $green $green $black $red $green
+client.focused_inactive $green $black $green $red $green
+client.unfocused $peach $peach $black $red $peach
+client.urgent $red $red $black $red $red
+
+# Gaps
+gaps horizontal 1
+gaps vertical 1
+gaps left 5
+gaps right 5
+gaps inner 10
+default_border pixel 4
+
+# Window rules
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [app_id="timeshift-gtk"] floating enable
+
+# Output
+output eDP-1 {
+	subpixel rgb
+	#bg $(find $wallpapers_path -type f | shuf -n 1) fill
+	bg $wallpaper_path fill
+	scale 1
+}
+
+input type:touchpad {
+	dwt disabled
+	accel_profile adaptive
+	pointer_accel 0.4
+	left_handed disabled
+	natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_layout us,ara
+    xkb_options grp:rctrl_toggle
+}
+
+seat seat0 xcursor_theme Catppuccin-Dark-Cursors 32
+### Misc Options ###
+focus_follows_mouse yes
+floating_modifier $mod normal
+floating_maximum_size 1920 x 1080
+
+### Essential bindings ###
+    # Sound
+    bindsym --locked XF86AudioRaiseVolume exec volume.sh --inc
+    bindsym --locked XF86AudioLowerVolume exec volume.sh --dec
+    bindsym --locked XF86AudioMute exec volume.sh --toggle
+    bindsym --locked XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle
+    # Brightness
+    bindsym --locked XF86MonBrightnessUp exec brightness.sh --inc
+    bindsym --locked XF86MonBrightnessDown exec brightness.sh --dec
+    # Move focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Layout
+    bindsym $mod+g splith
+    bindsym $mod+v splitv
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+t layout toggle split
+    # Fullscreen stuff
+    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+    bindsym $mod+a focus parent
+    # Scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+    # Resize
+    mode "resize" {
+    	bindsym $left resize shrink width 20px
+    	bindsym $down resize grow height 20px
+    	bindsym $up resize shrink height 20px
+    	bindsym $right resize grow width 20px
+
+    	bindsym Left resize shrink width 20px
+    	bindsym Down resize grow height 20px
+    	bindsym Up resize shrink height 20px
+    	bindsym Right resize grow width 20px
+    	bindsym Return mode "default"
+    	bindsym Escape mode "default"
+	}
+    # Disable all bindings so mateo can't open a terminal
+    # also useful for passing keys to VM instead of the WM
+    mode "mateo" {
+        bindsym Ctrl+$mod+p mode "default"
+    }
+    bindsym Ctrl+$mod+p mode "mateo" 
+    bindsym $mod+Shift+r mode "resize"
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+    # Force kill focused window
+    bindsym $mod+Shift+x exec swaymsg -t get_tree | \
+          jq '.. | select(.type?) | select(.focused==true).pid' | \
+          xargs -L 1 kill -9
+    # Toggle screen
+    bindsym --locked $mod+p exec swaymsg "output eDP-1 dpms toggle" 	
+    # Reload sway
+    bindsym $mod+Shift+c reload
+    # Exit sway
+    bindsym $mod+Shift+p exec sway_exit.sh
+
+### Bindings ### 
+	# Terminal
+    bindsym $mod+Return exec $term
+    # Filemanager
+    bindsym $mod+e exec --no-startup-id $file
+	# School folder
+    bindsym $mod+Shift+s exec --no-startup-id $file ~/Documents/CMU/Spring23 
+    # Launcher
+    bindsym $mod+d exec $dmenu
+    bindsym $mod+r exec $menu
+    bindsym $mod+tab exec swaymsg [con_id=$(swaymsg -t get_tree | ~/.local/bin/windows.py t)] focus
+    bindsym $mod+Shift+tab exec swaymsg [con_id=$(swaymsg -t get_tree | ~/.local/bin/windows.py f)] focus
+    # Browser
+    bindsym $mod+b exec $browser-p
+    bindsym $mod+Shift+b exec $altbrowser
+    bindsym $mod+Shift+f exec $browser
+    # Lock/display flipping
+    bindsym $mod+backslash exec $lock
+    bindsym $mod+bracketleft exec swaymsg output eDP-1 transform 0
+    bindsym $mod+bracketright exec swaymsg output eDP-1 transform 180
+    # Toggle notifications, tihs doesn't work
+    bindsym $mod+Shift+backslash exec --no-startup-id exec notif-toggle.sh
+    # Screenrecording and screenshot
+    bindsym Print exec gscreenshot
+    bindsym $mod+Print exec gscreenshot -n -sc
+    bindsym --to-code $mod+Shift+Print exec $ocrscreenshot 
+    # Chat
+    bindsym $mod+Shift+Semicolon exec $xmpp
+    bindsym --locked $mod+q exec killall dino
+    # Editor
+    bindsym $mod+Shift+e exec $editor
+    # Clipboard
+    bindsym $alt+v exec clipboard.sh
+    # Powermenu
+    bindsym Control+$alt+Delete exec powermenu.sh
+
+# ========== GAPS ==========
+
+
+bar {
+    swaybar_command waybar
+}
+
+# This is because sway does not set the desktop enviroment variable
+include /etc/sway/config.d/*
+
+# =========== AUTOSTART ===========
+exec_always import-gsettings
+exec wl-paste --type text --watch clipman store --max-items=100
+exec clipman restore
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always swayidle -w \
+    timeout 300 '~/.config/sway/scripts/lock.sh' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+#exec --no-startup-id /usr/bin/xsettingsd
+# 600s is 10m, 900s is 15m
+#exec swayidle -w \
+#	timeout 600 '$lock' \
+#	timeout 900 'swaymsg "output * dpms off"' \
+#	resume 'swaymsg "output * dpms on"'
+
+# =========== Specific window rules ===========
+#workspace number 10 output HDMI-A-1

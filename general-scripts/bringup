@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+wifi () {
+    doas systemctl start NetworkManager
+}
+
+bluetooth () {
+    doas rfkill unblock bluetooth
+    doas systemctl start bluetooth
+}
+
+vm () {
+    doas nft flush ruleset
+    doas systemctl stop nftables
+    sleep 2
+    doas systemctl start libvirtd
+}
+
+cups () {
+    doas systemctl start cups
+}
+
+if [ $1 = "wifi" ]; then
+    echo "Starting wifi..."
+    wifi
+elif [ $1 = "bluetooth" ]; then
+    echo "Starting bluetooth..."
+    bluetooth
+elif [ $1 = "vm" ]; then
+    vm
+elif [ $1 = "cups" ]; then
+    cups
+elif [ $1 = "all" ]; then
+    echo "Starting wifi and bluetooth..."
+    wifi
+    bluetooth
+fi

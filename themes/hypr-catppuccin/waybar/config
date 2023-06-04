@@ -1,0 +1,157 @@
+{
+    
+    "height": 30,
+    "modules-left": [
+		"custom/launcher",
+		"wlr/workspaces",
+    ],
+    "modules-center": [
+    	"clock",
+        "custom/playerctl",
+    ],
+    "modules-right": [
+    	"idle_inhibitor",
+    	"temperature",
+        "backlight",
+        "pulseaudio",
+        "network",
+        "battery",
+        "tray",
+        "custom/off"
+    ],
+    "custom/launcher": {
+		"format": " ",
+		"on-click": "~/.config/hypr/scripts/emenu_launcher.sh",
+		"tooltip": false
+    },
+    "sway/mode": {
+        "format": "󰔡 {}",
+        "tooltip": false
+    },
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "sort-by-number": true,
+        "on-click": "activate",
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰈈 ",
+            "deactivated": "󰈉 "
+        },
+        "tooltip": false
+    },
+     "temperature": {
+		"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+		"critical-threshold": 85,
+		"interval": 1,
+		"format": "<span font='12' rise='-2500'>󰔏</span> {temperatureC}°C",
+		"tooltip": false,
+	},
+    "backlight": {
+            "format": "󰃠 {percent}%",
+            "on-scroll-up": "brightness.sh --dec",
+            "on-scroll-down": "brightness.sh --inc",
+            "smooth-scrolling-threshold": 5,
+    },
+    "pulseaudio": {
+           "scroll-step": 1,
+            "format": "{icon} {volume}%", 
+            "format-muted": "󰖁 Muted",
+            "format-icons": {
+                "default": ["", "", ""]
+            },
+            "states": {
+            	"warning": 85,
+            },
+            "on-scroll-up": "volume.sh --dec",
+            "on-scroll-down": "volume.sh --inc",
+            "smooth-scrolling-threshold": 5,
+            "tooltip": false,
+            "on-click": "volume.sh --toggle",
+            "on-click-right": "pavucontrol",
+    },
+    "battery": {
+            "interval": 10,
+            "states": {
+                	"warning": 20,
+                	"critical": 10
+	            },
+	            "format": "{icon} {capacity}%",
+	            "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂁", "󰂂", "󰁹"],
+	            "format-full": "{icon} {capacity}%",
+	            "format-charging": "󰂄 {capacity}%",
+            "tooltip": true
+    },
+    "clock": {
+		"interval": 1,
+		"format": "{:%I:%M %p  %A %b %d}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"tooltip": true
+    },
+    "memory": {
+        "interval": 1,
+        "format": "󰘚 {percentage}%",
+        "states": {
+        	"warning": 85,
+        },
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "󰍛 {usage}%"
+    },
+    "cpu#2": {
+    	"interval": 1,
+    	"format": " {load}",
+    	"tooltip": false
+    },
+    "network": {
+    	"interval": 1,
+        "format-wifi": "󰒢 {essid}",
+        "format-ethernet": "󰈀  {ifname} ({ipaddr})",
+        "format-linked": "󰒢 {essid} (No IP)",
+        "format-disconnected": "󰒢 Disconnected",
+        "format-alt": "{ifname} ({ipaddr})",
+        "tooltip": false,
+        "on-click-right": "exec nm-connection-editor"
+    },
+    "custom/off": {
+        "format": "",
+        "on-click": "powermenu.sh",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/playerctl": {
+        //"format": "<span font='12' rise='-2500'>{icon}</span> {}",
+        "format": "<span font='10' rise='-1000'>󰎈</span>  {} ",
+        "format-icons": {
+                "Playing": "󰐊",
+                "Paused": "󰏤",
+        },
+    	"escape": true,
+   	 "return-type": "json",
+    	"max-length": 40,
+    	"on-click": "playerctl play-pause",
+    	"on-click-right": "playerctl stop",
+        "on-click-middle": "killall sublime-music",
+    	"smooth-scrolling-threshold": 10,
+    	"on-scroll-up": "playerctl next",
+    	"on-scroll-down": "playerctl previous",
+    	"exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{status}} : {{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F", 
+    },
+
+    "custom/playerctltest": {
+		"format": "{}",
+		"return-type": "json",
+		"max-length": 40,
+		"exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
+		"on-click": "playerctl play-pause",
+		"on-right-click": "notify-send media",
+		"on-scroll-up": "playerctl position 3+",
+		"on-scroll-down": "playerctl position 3-"
+	}
+
+}

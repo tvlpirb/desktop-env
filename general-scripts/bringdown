@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+wifi () {
+    doas systemctl stop NetworkManager
+}
+
+bluetooth () {
+    bluetoothctl power off
+    doas systemctl stop bluetooth
+    doas rfkill block bluetooth
+}
+
+vm () {
+    doas systemctl stop libvirtd
+}
+
+if [ $1 = "wifi" ]; then
+    echo "Stopping wifi..."
+    wifi
+elif [ $1 = "bluetooth" ]; then
+    echo "Stopping bluetooth..."
+    bluetooth
+elif [ $1 = "vm" ]; then
+    echo "Stopping libvirt..."
+    vm
+elif [ $1 = "all" ]; then
+    echo "Stopping wifi and bluetooth..."
+    wifi
+fi

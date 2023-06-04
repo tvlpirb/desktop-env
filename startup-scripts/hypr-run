@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Session
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_CURRENT_DESKTOP=Hyprland
+
+source /usr/local/bin/wayland_enablement.sh
+
+exec Hyprland
