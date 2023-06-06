@@ -1,0 +1,143 @@
+{
+  "layer": "top",
+  "position": "top", 
+  "height": 32,
+  
+  "modules-left":   ["wlr/workspaces"],
+  "modules-center": ["custom/playerctl"],
+  "modules-right":  ["tray", "pulseaudio", "network", "clock#date", "clock#time", "custom/power"],
+
+  "wlr/taskbar": {
+	"format": "{icon} {app_id}",
+	"icon-size": 14,
+	"icon-theme": "Papirus",
+	"tooltip-format": "{title}",
+	"on-click": "activate",
+	"on-click-middle": "close",
+  "on-click-right": "minimize-raise",
+	"ignore-list": [
+	    "Alacritty"
+	],
+	"app_ids-mapping": {
+	}
+  },
+
+  "wlr/workspaces": {
+    // "disable-scroll": true,
+    "sort-by-number": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span color=\"#EBDBB2\"></span>",
+      "2": "<span color=\"#EBDBB2\"></span>",
+      "3": "<span color=\"#EBDBB2\"></span>",
+      "4": "<span color=\"#EBDBB2\"></span>",
+      "5": "<span color=\"#EBDBB2\"></span>",
+      "6": "<span color=\"#EBDBB2\"></span>",
+      "7": "<span color=\"#EBDBB2\"></span>",
+      "8": "<span color=\"#EBDBB2\"></span>",
+      "9": "<span color=\"#EBDBB2\"></span>",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  },
+
+  "clock#time": {
+    "interval": 1,
+    "format": "    {:%H:%M:%S} ",
+    "tooltip": false
+  },
+
+  "clock#date": {
+    "interval": 10,
+    "format": "    {:%e %b %y} ", // icon: calendar-alt
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "network": {
+    "format-wifi": " 直 {essid} ",
+    "format-ethernet": "   {essid} ",
+    "format-linked": "{ifname} (no ip)  ",
+    "format-disconnected": " 睊 disconnected ",
+    "tooltip-format-wifi": "signal strenght: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}% ",
+    "format-muted": "   muted ",
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute 0 toggle",
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "~/.config/hypr/scripts/pactl_toggle.sh",
+    "format-icons": {
+      "headphone": "   ",
+      "hands-free": "   ",
+      "headset": "   ",
+      "phone": "   ",
+      "portable": "   ",
+      "car": "    ",
+      "default": ["   ", "   ", " 墳 ", "   "]
+    }
+  },
+
+  "custom/power": {
+    "format": " ⏻ ",
+    "on-click": "~/.config/hypr/scripts/rofi-power"
+  },
+  "custom/playerctl": {
+    //"format": "<span font='12' rise='-2500'>{icon}</span> {}",
+    "format": "<span font='10' rise='-1000'>󰎈</span>  {} ",
+    "format-icons": {
+	"Playing": "󰐊",
+        "Paused": "󰏤",
+    },
+    	"escape": true,
+   	"return-type": "json",
+    	"max-length": 40,
+    	"on-click": "playerctl play-pause",
+    	"on-click-right": "playerctl stop",
+        "on-click-middle": "killall sublime-music",
+    	"smooth-scrolling-threshold": 10,
+    	"on-scroll-up": "playerctl next",
+    	"on-scroll-down": "playerctl previous",
+    	"exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{status}} : {{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F", 
+    },
+
+  "mpd": {
+    "format": " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})    ",
+    "format-disconnected": " Disconnected  ",
+    "format-stopped": " Stopped  ",
+    "interval": 2,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "random-icons": {
+      "off": "<span color=\"#fb4934\"> </span>", // Icon grayed out when "random" is off
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  }
+}

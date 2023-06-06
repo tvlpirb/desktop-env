@@ -3,11 +3,11 @@
     "height": 30,
     "modules-left": [
 		"custom/launcher",
-		"wlr/workspaces",
+		"wlr/workspaces"
     ],
     "modules-center": [
     	"clock",
-        "custom/playerctl",
+        "custom/playerctl"
     ],
     "modules-right": [
     	"idle_inhibitor",
@@ -31,7 +31,7 @@
     "wlr/workspaces": {
         "disable-scroll": true,
         "sort-by-number": true,
-        "on-click": "activate",
+        "on-click": "activate"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -46,13 +46,13 @@
 		"critical-threshold": 85,
 		"interval": 1,
 		"format": "<span font='12' rise='-2500'>󰔏</span> {temperatureC}°C",
-		"tooltip": false,
+		"tooltip": false
 	},
     "backlight": {
             "format": "󰃠 {percent}%",
             "on-scroll-up": "brightness.sh --dec",
             "on-scroll-down": "brightness.sh --inc",
-            "smooth-scrolling-threshold": 5,
+            "smooth-scrolling-threshold": 5
     },
     "pulseaudio": {
            "scroll-step": 1,
@@ -62,14 +62,14 @@
                 "default": ["", "", ""]
             },
             "states": {
-            	"warning": 85,
+            	"warning": 85
             },
             "on-scroll-up": "volume.sh --dec",
             "on-scroll-down": "volume.sh --inc",
             "smooth-scrolling-threshold": 5,
             "tooltip": false,
             "on-click": "volume.sh --toggle",
-            "on-click-right": "pavucontrol",
+            "on-click-right": "pavucontrol"
     },
     "battery": {
             "interval": 10,
@@ -93,8 +93,8 @@
         "interval": 1,
         "format": "󰘚 {percentage}%",
         "states": {
-        	"warning": 85,
-        },
+        	"warning": 85
+        }
     },
     "cpu": {
         "interval": 1,
@@ -129,7 +129,7 @@
         "format": "<span font='10' rise='-1000'>󰎈</span>  {} ",
         "format-icons": {
                 "Playing": "󰐊",
-                "Paused": "󰏤",
+                "Paused": "󰏤"
         },
     	"escape": true,
    	 "return-type": "json",
@@ -140,7 +140,7 @@
     	"smooth-scrolling-threshold": 10,
     	"on-scroll-up": "playerctl next",
     	"on-scroll-down": "playerctl previous",
-    	"exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{status}} : {{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F", 
+    	"exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{status}} : {{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F" 
     },
 
     "custom/playerctltest": {

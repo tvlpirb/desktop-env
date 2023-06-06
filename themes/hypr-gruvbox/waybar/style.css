@@ -1,0 +1,139 @@
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: JetBrainsMono Nerd Font;
+  font-weight: bold;
+  font-size: 15px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #1d2021;
+  color: #ebdbb2;
+}
+
+tooltip {
+  background: #282828;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1d2021;
+}
+#workspaces button {
+  padding: 0 0.6em;
+  color: #504945;
+  border-radius: 6px;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#workspaces button.active {
+  color: #ebdbb2;
+  background: #4e635b;
+}
+
+#workspaces button.focused {
+  color: #ebdbb2;
+  background: #4e635b;
+}
+
+#workspaces button.urgent {
+  color: #1d2021;
+  background: #fb4934;
+}
+
+#workspaces button:hover {
+  background: #4e635b;
+  color: #ebdbb2;
+}
+
+#custom-power,
+#date,
+#clock,
+#pulseaudio,
+#network,
+#workspaces,
+#mpd,
+#tray {
+  background: #32302f;
+  padding: 0 0.6em;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+}
+
+#tray {
+  margin-right: 6px;
+}
+
+#network {
+  color: #ebdbb2;
+  margin-right: 6px;
+}
+
+#pulseaudio {
+  margin-right: 6px;
+  color: #ebdbb2;
+}
+
+#custom-power {
+  color: #fb4934;
+  background: #32302f;
+}
+
+#clock {
+  color: #ebdbb2;
+  margin-right: 6px;
+}
+
+#mpd {
+  background: #32302f;
+  background-image: linear-gradient(62deg, #32302f 0%, #3d3d3d 100%);
+  color: #ebdbb2;
+}
+
+#mpd.playing {
+  background: #32302f;
+  background-image: linear-gradient(62deg, #32302f 0%, rgba(184,187,38,00) 100%);
+  color: #ebdbb2;
+}
+
+#mpd.paused {
+  background: #32302f;
+  background-image: linear-gradient(62deg, #32302f 0%, rgba(251,73,52,00) 100%);
+  color: #ebdbb2;
+}
+
+#taskbar {
+  background: #1d2021;
+  padding: 0 0.6em;
+  margin-right: 10px;
+  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  color: #ebdbb2;
+}
+
+#taskbar button {
+  border-radius: 6px;
+  background: #32302f;
+  color: #a89984;
+  margin-right: 6px;
+}
+
+#taskbar button.minimized {
+  border-radius: 6px;
+  background: #32302f;
+  color: #a89984;
+}
+
+#taskbar button.active {
+  border-radius: 6px;
+  background: #4e635b;
+  color: #ebdbb2;
+}
