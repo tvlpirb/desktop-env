@@ -20,11 +20,11 @@ tooltip {
   border-color: #1d2021;
 }
 #workspaces button {
-  padding: 0 0.6em;
+  padding: 0 0.4em;
   color: #504945;
   border-radius: 6px;
-  margin-right: 4px;
-  margin-left: 4px;
+  margin-right: 2px;
+  margin-left: 2px;
   margin-top: 2px;
   margin-bottom: 2px;
 }
@@ -51,14 +51,18 @@ tooltip {
 
 #custom-power,
 #date,
-#clock,
+#backlight,
+#idle_inhibitor,
 #pulseaudio,
 #network,
 #workspaces,
 #mpd,
-#tray {
+#temperature,
+#clock,
+#tray,
+#battery {
   background: #32302f;
-  padding: 0 0.6em;
+  padding: 0 0.5em;
   margin-right: 4px;
   margin-left: 4px;
   margin-top: 4px;

@@ -4,8 +4,8 @@
   "height": 32,
   
   "modules-left":   ["wlr/workspaces"],
-  "modules-center": ["custom/playerctl"],
-  "modules-right":  ["tray", "pulseaudio", "network", "clock#date", "clock#time"],
+  "modules-center": ["clock","custom/playerctl"],
+  "modules-right":  ["tray", "idle_inhibitor","temperature","backlight","pulseaudio", "network", "battery"],
 
   "wlr/taskbar": {
 	"format": "{icon} {app_id}",
@@ -21,33 +21,14 @@
 	"app_ids-mapping": {
 	}
   },
-
   "wlr/workspaces": {
-    // "disable-scroll": true,
-    "sort-by-number": true,
-    "all-outputs": true,
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format": "{icon}",
-    "format-icons": {
-      "1": "<span color=\"#EBDBB2\"></span>",
-      "2": "<span color=\"#EBDBB2\"></span>",
-      "3": "<span color=\"#EBDBB2\"></span>",
-      "4": "<span color=\"#EBDBB2\"></span>",
-      "5": "<span color=\"#EBDBB2\">󰍡</span>",
-      "6": "<span color=\"#EBDBB2\"></span>",
-      "7": "<span color=\"#EBDBB2\"></span>",
-      "8": "<span color=\"#EBDBB2\"></span>",
-      "9": "<span color=\"#EBDBB2\">󰊠</span>",
-      "urgent": "",
-      "focused": "",
-      "default": ""
-    }
-  },
-
+        "disable-scroll": true,
+        "sort-by-number": true,
+        "on-click": "activate"
+   },
+  
   "tray": {
-    "icon-size": 14,
+    "icon-size": 16,
     "spacing": 10
   },
 
@@ -62,7 +43,12 @@
     "format": "  {:%e %b %y} ", // icon: calendar-alt
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
-
+  "clock": {
+		"interval": 1,
+		"format": "{:%I:%M %p  %A %b %d}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"tooltip": true
+    },
 
   "network": {
     	"interval": 1,
@@ -72,17 +58,14 @@
         "format-disconnected": "󰒢 Disconnected",
         "format-alt": "{ifname} ({ipaddr})",
         //"tooltip": false,
-	"tooltip-format-wifi": "signal strenght: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}",
+	// "tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}",
         "on-click-right": "exec nm-connection-editor"
-    },
+  },
 
   "pulseaudio": {
-    "format": "{icon} {volume}% ",
-    "format-muted": "   muted ",
-    "scroll-step": 5,
-    "on-click": "pactl set-sink-mute 0 toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "~/.config/hypr/scripts/pactl_toggle.sh",
+    "scroll-step": 1,
+    "format": "{icon} {volume}%", 
+    "format-muted": "󰖁 Muted",
     "format-icons": {
       "headphone": "   ",
       "hands-free": "   ",
@@ -90,10 +73,57 @@
       "phone": "   ",
       "portable": "   ",
       "car": "    ",
-      "default": ["   ", "   ", " 󰕾 ", "   "]
-    }
+       "default": ["", "", ""]
+    },
+    "states": {
+     	"warning": 85
+    },
+    "on-scroll-up": "volume.sh --dec",
+    "on-scroll-down": "volume.sh --inc",
+    "smooth-scrolling-threshold": 5,
+    "tooltip": false,
+    "on-click": "volume.sh --toggle",
+    "on-click-right": "pavucontrol"
   },
 
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+         "activated": "󰈈 ",
+      "deactivated": "󰈉 "
+     },
+     "tooltip": false
+  },
+ 
+  "temperature": {
+		"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+		"critical-threshold": 85,
+		"interval": 1,
+		"format": "<span font='12' rise='-2500'>󰔏</span> {temperatureC}°C",
+		"tooltip": false
+	},
+
+  "backlight": {
+            "format": "󰃠 {percent}%",
+            "on-scroll-up": "brightness.sh --dec",
+            "on-scroll-down": "brightness.sh --inc",
+            "smooth-scrolling-threshold": 5
+    },
+
+  "battery": {
+            "interval": 10,
+
+            "states": {
+                	"warning": 20,
+                	"critical": 10
+	            },
+	            "format": "{icon} {capacity}%",
+	            "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂁", "󰂂", "󰁹"],
+	            "format-full": "{icon} {capacity}%",
+	            "format-charging": "󰂄 {capacity}%",
+            "tooltip": true
+  },
+    
   "custom/power": {
     "format": " ⏻ ",
     "on-click": "~/.config/hypr/scripts/rofi-power"
