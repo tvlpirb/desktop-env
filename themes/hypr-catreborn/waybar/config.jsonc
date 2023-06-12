@@ -45,15 +45,20 @@
         // "on-click": "pkill wofi || wofi --show drun -n",
         // "on-click-right": "pkill wofi || wofi --show run -n",
     },
+    // "wlr/workspaces": {
+    //     // "format": "{icon} {name}",
+    //     "format": "",
+    //     "format-icons": {
+    //         "active": "",
+    //         "default": ""
+    //     },
+    //     "on-scroll-up": "hyprctl dispatch workspace e-1",
+    //     "on-scroll-down": "hyprctl dispatch workspace e+1",
+    //     "on-click": "activate"
+    // },
     "wlr/workspaces": {
-        // "format": "{icon} {name}",
-        "format": "",
-        "format-icons": {
-            "active": "",
-            "default": ""
-        },
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "disable-scroll": true,
+        "sort-by-number": true,
         "on-click": "activate"
     },
     "cpu": {

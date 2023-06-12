@@ -4,7 +4,7 @@
   "height": 32,
   
   "modules-left":   ["wlr/workspaces"],
-  "modules-center": ["clock","custom/playerctl"],
+  "modules-center": ["clock","custom/music"],
   "modules-right":  ["tray", "idle_inhibitor","temperature","backlight","pulseaudio", "network", "battery"],
 
   "wlr/taskbar": {
@@ -48,6 +48,23 @@
 		"format": "{:%I:%M %p  %A %b %d}",
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 		"tooltip": true
+    },
+"custom/music": {
+        "format": "{icon}{}",
+        "format-icons": {
+            // "Playing": " ", // Uncomment if not using the dynamic script
+            "Paused": "󰏥 ",
+            "Stopped": "&#x202d;󰙦 " // This stop symbol is RTL. So &#x202d; is left-to-right override.
+        },
+        "escape": true,
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/caway.sh -b 10 -f 70",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "on-click-right": "g4music",
+        "max-length": 35
     },
 
   "network": {
