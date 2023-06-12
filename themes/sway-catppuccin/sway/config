@@ -185,7 +185,7 @@ floating_maximum_size 1920 x 1080
     # Reload sway
     bindsym $mod+Shift+c reload
     # Exit sway
-    bindsym $mod+Shift+p exec sway_exit.sh
+    bindsym $mod+Shift+p exec ~/.config/sway/scripts/sway_exit.sh
 
 ### Bindings ### 
 	# Terminal
