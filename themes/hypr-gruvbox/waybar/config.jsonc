@@ -4,7 +4,7 @@
   "height": 32,
   
   "modules-left":   ["wlr/workspaces"],
-  "modules-center": ["clock","custom/music"],
+  "modules-center": ["clock","custom/playerctl"],
   "modules-right":  ["tray", "idle_inhibitor","temperature","backlight","pulseaudio", "network", "battery"],
 
   "wlr/taskbar": {
@@ -58,7 +58,7 @@
         },
         "escape": true,
         "tooltip": true,
-        "exec": "~/.config/waybar/scripts/caway.sh -b 10 -f 70",
+        "exec": "~/.config/waybar/scripts/caway.sh -e",
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl previous",
