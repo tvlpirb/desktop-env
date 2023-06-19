@@ -7,55 +7,55 @@ print_info() {
     # info " OS" distro
     # info " Host" model
     # info " Kernel" kernel
-    # info "󰅶 Uptime" uptime
-    # info "󰏔 Packages" packages
+    # info " Uptime" uptime
+    # info " Packages" packages
     # info " Shell" shell
     # info " Resolution" resolution
     # info " DE" de
     # info " WM" wm
-    # info "󰏙 WM Theme" wm_theme
+    # info " WM Theme" wm_theme
     # info " Theme" theme
-    # info "󰱫 Icons" icons
+    # info " Icons" icons
     # info " Terminal" term
-    # info "󰛖 Terminal Font" term_font
+    # info "ﯔ Terminal Font" term_font
     # info " CPU" cpu
-    # info "󰊗 GPU" gpu
-    # info "󰍛 Memory" memory
+    # info " GPU" gpu
+    # info " Memory" memory
 
     # # info " GPU Driver" gpu_driver  # Linux/macOS only
     # # info " CPU Usage" cpu_usage
-    # info "󰋊 Disk" disk
-    # info "󰂉 Battery" battery
+    # info " Disk" disk
+    # info " Battery" battery
     # info " Font" font
     # # info " Song" song
-    # # [[ "$player" ]] && prin "󰗅 Music Player" "$player"
-    # # info "󰀂 Local IP" local_ip
-    # # info "󰀂 Public IP" public_ip
+    # # [[ "$player" ]] && prin "醙 Music Player" "$player"
+    # # info " Local IP" local_ip
+    # # info " Public IP" public_ip
     # # info " Users" users
     # # info " Locale" locale  # This only works on glibc systems.
     prin
     info "${cl2} ╭─" distro
     info "${cl2} ├─" kernel
     # info "${cl2} ├─" users
-    info "${cl2} ├─󰏗" packages
-    info "${cl2} ├─󰅶" uptime
+    info "${cl2} ├─" packages
+    info "${cl2} ├─" uptime
     info "${cl2} ╰─" shell
     prin
     info "${cl4} ╭─" model
     info "${cl4} ├─" cpu
     info "${cl4} ├─" cpu_usage
-    info "${cl4} ├─󰊗" gpu
+    info "${cl4} ├─" gpu
     # info "${cl4} ├─" gpu_driver
     info "${cl4} ├─" resolution
     info "${cl4} ├─" memory
-    # info "${cl4} ├─󰂉" battery
-    info "${cl4} ╰─󰋊" disk
+    # info "${cl4} ├─" battery
+    info "${cl4} ╰─" disk
     prin
     info "${cl6} ╭─" de
     info "${cl6} ├─" term
-    info "${cl6} ├─󰛖" term_font
+    info "${cl6} ├─ﯔ" term_font
     info "${cl6} ├─" theme
-    info "${cl6} ├─󰱫" icons
+    info "${cl6} ├─" icons
     info "${cl6} ╰─" font
     prin
     prin " \n \n ${cl3} \n \n ${cl5} \n \n ${cl2}  \n \n ${cl6}  \n \n ${cl4}  \n \n ${cl1}  \n \n ${cl7}  \n \n ${cl0}"
@@ -611,7 +611,7 @@ underline_char="-"
 # Example:
 # separator="->":   'Shell-> bash'
 # separator=" =":   'WM = dwm'
-separator=" 󰁕"
+separator=" "
 
 
 # Color Blocks
