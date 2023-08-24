@@ -157,7 +157,7 @@
     	"max-length": 40,
     	"on-click": "playerctl play-pause",
     	"on-click-right": "playerctl stop",
-        "on-click-middle": "killall sublime-music",
+        "on-click-middle": "killall spotify",
     	"smooth-scrolling-threshold": 10,
     	"on-scroll-up": "playerctl next",
     	"on-scroll-down": "playerctl previous",
