@@ -1,0 +1,20 @@
+* {
+  all: unset;
+}
+
+.powermenu {
+  background-color: #a89984;
+  border: 1px solid #282828;
+}
+
+.widget {
+  padding: 12px;
+}
+
+.active {
+  background-color: #ebdbb2;
+}
+
+.inactive {
+  background-color: transparent;
+}

@@ -1,0 +1,31 @@
+* {
+  all: unset;
+  font-family: "Iosevka Nerd Font";
+  font-size: 16px;
+  color: #282828;
+}
+
+window {
+  background-color: #a89984;
+  padding: 12px;
+}
+
+#entry {
+  padding: 16px;
+}
+
+#entry:selected {
+  background-color: #ebdbb2;
+  padding: 20px;
+}
+
+#input {
+  background-color: #a89984;
+  padding: 12px;
+  margin: 6px;
+}
+
+image {
+  padding-left: 2px;
+  padding-right: 24px;
+}

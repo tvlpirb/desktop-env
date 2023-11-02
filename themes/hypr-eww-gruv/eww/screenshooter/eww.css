@@ -1,0 +1,21 @@
+* {
+  all: unset;
+  color: #282828;
+}
+
+.screenshooter {
+  background-color: #a89984;
+}
+
+.active,
+.inactive {
+  padding: 12px;
+}
+
+.active {
+  background-color: #ebdbb2;
+}
+
+.inactive {
+  background-color: transparent;
+}

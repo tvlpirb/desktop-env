@@ -1,0 +1,61 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP";
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  color: #282828;
+}
+
+tooltip.background { background-color: #ebdbb2; }
+
+.bar { background-color: #282828; }
+
+.tray,
+.workspaces,
+.left {
+  margin: 6px;
+  padding: 6px;
+  background-color: transparent;
+}
+
+.tray-item,
+.time,
+.date {
+  margin: 0px 8px;
+  background-color: #ebdbb2;
+}
+
+.time { margin-left: 0px; }
+
+.control-center-item {
+  margin-right: 0px;
+  background-color: #a89984;
+}
+
+.active-ws {
+  font-weight: bold;
+  color: #ebdbb2;
+  padding: 0px 8px;
+}
+
+.occupied-ws {
+  padding: 0px 8px;
+  color: rgba(235, 219, 178, 0.25);
+}
+
+.icon { padding: 6px 8px; }
+
+.text { padding: 4px 12px; }
+
+.clock-icon { background-color: #458588; }
+
+.date-icon { background-color: #689d6a; }
+
+.wifi-icon { background-color: #d65d0e; }
+
+.vol-icon { background-color: #d79921; }
+
+.bat-icon { background-color: #98971a; }
+
+.br-icon { background-color: #b16286; }

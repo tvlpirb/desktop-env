@@ -1,3 +1,10 @@
 
 2022/06/30 (12:53:42) | ===> btop++ v.1.2.3
 2022/06/30 (12:53:42) | ERROR: Failed to get size of terminal!
+
+2023/10/04 (09:25:02) | ===> btop++ v.1.2.13
+2023/10/04 (09:25:02) | ERROR: Stall in Runner thread, restarting!
+2023/10/04 (09:25:10) | WARNING: Failed to join _runner thread on exit!
+
+2023/10/04 (09:25:33) | ===> btop++ v.1.2.13
+2023/10/04 (09:25:33) | ERROR: Stall in Runner thread, restarting!

@@ -1,0 +1,79 @@
+* {
+  all: unset;
+  font-family: "Iosevka Nerd Font", "Noto Sans CJK JP";
+  font-size: 16px;
+  color: #282828;
+}
+
+tooltip.background { background-color: #ebdbb2; }
+
+.control-center {
+  background-color: #282828;
+  margin: 2px;
+}
+
+.top { background-color: transparent; }
+
+.mid { background-color: rgba(28, 28, 28, 0.5); }
+
+.end { background-color: transparent; }
+
+button { font-size: 26px; }
+
+.wifi,
+.bluetooth,
+.volume,
+.brightness,
+.cpu,
+.ram,
+.battery {
+  background-color: #ebdbb2;
+  margin: 8px;
+}
+
+.wifi-icon { background-color: #d65d0e; }
+
+.bt-icon { background-color: #458588; }
+
+.cpu-icon { background-color: #689d6a; }
+
+.ram-icon { background-color: #a89984; }
+
+.bat-icon { background-color: #98971a; }
+
+.vol-icon { background-color: #d79921; }
+
+.br-icon { background-color: #b16286; }
+
+.wifi-icon,
+.bt-icon,
+.cpu-icon,
+.ram-icon,
+.bat-icon,
+.vol-icon,
+.br-icon { 
+  padding: 12px;
+}
+
+.text { padding: 12px; }
+
+scale { padding: 12px; }
+
+scale trough {
+  background-color: rgba(28, 28, 28, 0.5);
+  min-height: 100px;
+  min-width: 24px;
+}
+
+scale trough highlight { background-color: #282828; }
+
+.volume-scale scale trough,
+.brightness-scale scale trough{
+  min-height: 24px;
+  min-width: 100px;
+}
+
+.volume-scale scale trough highlight,
+.brightness-scale scale trough highlight {
+  background-color: #282828;
+}

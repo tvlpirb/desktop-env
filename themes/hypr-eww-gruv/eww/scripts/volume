@@ -1,0 +1,43 @@
+#!/bin/bash
+
+imgdir="images/gruvbox-dark"
+
+icon() {
+  lvl=`pamixer --get-volume-human | awk -F'%' '{ print $1 }' | xargs`
+  if [[ $lvl == "muted" ]]; then
+    echo "../$imgdir/volume-off.svg"
+  elif [[ $lvl -eq 0 ]]; then
+    echo "../$imgdir/volume-low.svg"
+  elif [[ $lvl -le 50 ]]; then
+    echo "../$imgdir/volume-medium.svg"
+  else
+    echo "../$imgdir/volume-high.svg"
+  fi
+}
+
+level() {
+  level=`pamixer --get-volume-human | awk -F'%' '{ print $1 }' | xargs`
+  if [[ $level -eq "muted" ]]; then
+    echo "0"
+  else
+    echo $level
+  fi
+}
+
+widget() {
+  icon
+  level
+  echo "(box :spacing 0 :space-evenly false :class \"volume-listener\" (image :class \"icon vol-icon\" :path \"$icon\" :image-width \"20\" :image-height \"20\") (revealer :transition \"slideleft\" :reveal vol-rev :duration \"250ms\" (box :orientation \"h\" :hexpand false :space-evenly false (scale :flipped false :orientation \"h\" :value \"$level\" :draw-value false :min 0 :max 101 :onchange \"pamixer --set-volume {}\") (label :class \"slider-text\" :text \"$level%\"))))"
+}
+
+if [[ $1 == number ]]; then
+  level
+  pactl subscribe | grep --line-buffered "sink" | while read -r UNUSED_LINE; do
+    level
+  done
+elif [[ $1 == icon ]]; then
+  icon
+  pactl subscribe | grep --line-buffered "sink" | while read -r UNUSED_LINE; do
+    icon
+  done
+fi
