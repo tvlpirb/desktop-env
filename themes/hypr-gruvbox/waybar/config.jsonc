@@ -3,7 +3,7 @@
   "position": "top", 
   "height": 32,
   
-  "modules-left":   ["wlr/workspaces"],
+  "modules-left":   ["hyprland/workspaces"],
   "modules-center": ["clock","custom/playerctl"],
   "modules-right":  ["tray", "idle_inhibitor","temperature","backlight","pulseaudio", "network", "battery"],
 
@@ -70,7 +70,7 @@
   "network": {
     	"interval": 1,
         "format-wifi": "󰒢 {essid}",
-        "format-ethernet": "󰈀  {ifname} ({ipaddr})",
+        "format-ethernet": "󰈀  {ifname}",
         "format-linked": "󰒢 {essid} (No IP)",
         "format-disconnected": "󰒢 Disconnected",
         "format-alt": "{ifname} ({ipaddr})",

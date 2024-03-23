@@ -1,10 +1,10 @@
-# ROOT FILE #####
+##### ROOT FILE #####
 # This file contains configuration which is not theme specific,
 # mainly the bindings and some background applications. For theme
 # specific stuff look at hyprland.conf
 
 
-# Main execs ###
+### Main execs ###
 # Clipboard setup
 exec-once = wl-paste --type text --watch clipman store --max-items=500
 exec-once = clipman restore
@@ -21,7 +21,7 @@ exec-once = swayidle -w timeout 600 "systemctl suspend"
 
 
 
-# Variables ###
+### Variables ###
     $term = kitty
     $file = nemo
     $browser = firefox
@@ -38,7 +38,7 @@ exec-once = swayidle -w timeout 600 "systemctl suspend"
 
 $mainMod = SUPER
 
-# Essential bindings #### 
+#### Essential bindings #### 
     # Sound 
     bindel = , XF86AudioRaiseVolume, exec,volume.sh --inc
     bindel = , XF86AudioLowerVolume, exec,volume.sh --dec
@@ -149,7 +149,7 @@ $mainMod = SUPER
     bind = $mainMod SHIFT,backslash,exec,notif-toggle.sh
 
 
-# Bindings ####
+#### Bindings ####
     # Terminal
     bind = $mainMod, Return, exec, $term
     # File manager

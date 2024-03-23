@@ -43,4 +43,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/talhah/\x2eemacs\x2ed/bin\x1e/home/talhah/\x2elocal/bin
+SETUVAR fish_user_paths:/home/talhah/go/bin\x1e/home/talhah/\x2elocal/opt/flutter/bin/cache/dart\x2dsdk/bin\x1e/home/talhah/\x2elocal/opt/flutter/bin\x1e/home/talhah/\x2epub\x2dcache/bin\x1e/home/talhah/Android/Sdk/platform\x2dtools\x1e/home/talhah/Android/Sdk/tools\x1e/home/talhah/miniconda3/condabin\x1e/home/talhah/\x2eemacs\x2ed/bin\x1e/home/talhah/\x2elocal/bin
